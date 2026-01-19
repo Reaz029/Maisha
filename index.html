@@ -17,24 +17,43 @@
         overflow-x: hidden;
     }
 
-    /* Overlay (big heart) */
+    /* Overlay (big heart entrance) */
     #overlay {
         position: fixed;
         top: 0; left: 0;
-        width: 100%; height: 100%;
+        width: 100%;
+        height: 100%;
         background: linear-gradient(135deg, #ffdde1, #ee9ca7);
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
         z-index: 100;
         cursor: pointer;
+        text-align: center;
+    }
+
+    #overlayText {
+        font-family: 'Playfair Display', serif;
+        font-size: 2em;
+        color: #b4004e;
+        text-shadow: 2px 2px 10px rgba(255,92,162,0.5);
+        margin-bottom: 40px;
+        line-height: 1.4;
+        animation: fadeInText 2s ease-in-out;
+    }
+
+    @keyframes fadeInText {
+        0% { opacity: 0; transform: translateY(-20px); }
+        100% { opacity: 1; transform: translateY(0); }
     }
 
     #bigHeart {
         font-size: 10em;
-        color: #b4004e;
+        color: #ff4d88;
         animation: pulse 1.5s infinite;
-        text-shadow: 0 0 30px rgba(255, 92, 162, 0.5);
+        text-shadow: 0 0 30px rgba(255, 92, 162, 0.5), 0 0 60px rgba(255, 92, 162, 0.3);
+        transition: transform 0.3s ease;
     }
 
     @keyframes pulse {
@@ -42,7 +61,12 @@
         50% { transform: scale(1.2); }
     }
 
-    /* Main container (hidden initially) */
+    #bigHeart:hover {
+        transform: scale(1.3);
+        text-shadow: 0 0 50px #ff5ca2, 0 0 80px #ffb6c1, 0 0 100px #ff92c1;
+    }
+
+    /* Main page content (hidden initially) */
     #mainPage {
         display: none;
         max-width: 800px;
@@ -107,7 +131,7 @@
         to { transform: translateY(110vh); }
     }
 
-    /* Music button */
+    /* Small music button */
     #musicBtn {
         position: fixed;
         bottom: 30px;
@@ -126,12 +150,16 @@
 </head>
 <body>
 
-<!-- Overlay with big heart -->
+<!-- Overlay entrance -->
 <div id="overlay">
+    <h2 id="overlayText">
+        💕 Hello My Love 💕<br>
+        Click the Heart to Enter Your Birthday Surprise 💖
+    </h2>
     <div id="bigHeart">❤️</div>
 </div>
 
-<!-- Main page content (hidden initially) -->
+<!-- Main birthday page -->
 <div id="mainPage">
     <div class="container">
         <h1>Happy Birthday</h1>
@@ -163,15 +191,17 @@
         </footer>
     </div>
 
-    <!-- Music button -->
+    <!-- Background music -->
     <audio id="bgMusic" loop>
         <source src="happy-birthday.mp3" type="audio/mpeg">
     </audio>
+
+    <!-- Small music button -->
     <div id="musicBtn">❤️</div>
 </div>
 
 <script>
-    // Show main page on clicking big heart
+    // Overlay click to show main page and play music
     const overlay = document.getElementById('overlay');
     const mainPage = document.getElementById('mainPage');
     const music = document.getElementById('bgMusic');
@@ -186,7 +216,7 @@
         musicBtn.innerHTML = '💖';
     });
 
-    // Music button play/pause
+    // Small music button toggle
     musicBtn.addEventListener('click', () => {
         if (!isPlaying) {
             music.play();
