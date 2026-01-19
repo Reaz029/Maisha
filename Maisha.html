@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Happy Birthday My Love ❤️</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3em;
+            color: #b4004e;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-weight: 300;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.85);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+
+        .heart {
+            font-size: 2.5em;
+            animation: float 2s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+
+        .message {
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+
+        footer {
+            margin-top: 40px;
+            font-size: 0.9em;
+            opacity: 0.7;
+        }
+
+        /* Falling hearts */
+        .falling-heart {
+            position: fixed;
+            top: -10px;
+            font-size: 20px;
+            animation: fall linear infinite;
+            color: rgba(180,0,78,0.6);
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(110vh);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Happy Birthday</h1>
+    <h2>My Beautiful Love ❤️</h2>
+
+    <div class="card">
+        <div class="heart">💖</div>
+        <p class="message">
+            Today is special, because <strong>you</strong> were born.  
+            And somehow, the universe decided to gift me you.  
+            <br><br>
+            You make my days brighter, my heart warmer,  
+            and my life more meaningful.  
+            <br><br>
+         You are a STAR, shining today and always.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>Forever Yours</h2>
+        <p class="message">
+            With all my love,  
+            <br><strong>— Your Name 💕</strong>
+        </p>
+    </div>
+
+    <footer>
+        Made with love just for you ✨
+    </footer>
+</div>
+
+<script>
+    // Falling hearts animation
+    function createHeart() {
+        const heart = document.createElement('div');
+        heart.classList.add('falling-heart');
+        heart.innerHTML = '❤️';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = (3 + Math.random() * 5) + 's';
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 8000);
+    }
+
+    setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>
